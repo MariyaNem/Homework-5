@@ -3,18 +3,18 @@
 // [3, 7, 23, 12] -> 19
 // [-4, -6, 89, 6] -> 0
 
-int[] array = CreateArrayRndInt(4);
+int[] array = CreateArrayRndInt(4,-99,99);
 PrintArray(array);
 int sumNumbersOddPositions = SumNumbersOddPositions(array);
 Console.Write($"Сумма элементов массива стоящих на нечётных позициях = {sumNumbersOddPositions}");
 
-int[] CreateArrayRndInt(int size)
+int[] CreateArrayRndInt(int size, int min, int max)
 {
     int[] arr = new int[size];
     Random rnd = new Random();
     for (int i = 0; i < arr.Length; i++)
     {
-        arr[i] = rnd.Next(-99, 99 + 1);
+        arr[i] = rnd.Next(min, max + 1);
     }
     return arr;
 }
@@ -33,7 +33,7 @@ void PrintArray(int[] arr)
 int SumNumbersOddPositions(int[] arr)
 {
     int sum = 0;
-    for (int i = 1; i < arr.Length; i++)
+    for (int i = 0; i < arr.Length; i++)
     {
         if (i % 2 != 0) sum += arr[i];
     }
